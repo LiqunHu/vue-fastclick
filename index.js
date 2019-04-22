@@ -130,7 +130,9 @@
     layer.addEventListener('touchmove', this.onTouchMove, false);
     layer.addEventListener('touchend', this.onTouchEnd, false);
     layer.addEventListener('touchcancel', this.onTouchCancel, false);
-
+    layer.addEventListener('gesturestart', function (event) {
+      event.preventDefault();
+    });
     // Hack is required for browsers that don't support Event#stopImmediatePropagation (e.g. Android 2)
     // which is how FastClick normally stops click events bubbling to callbacks registered on the FastClick
     // layer when they are cancelled.
@@ -589,7 +591,7 @@
 
       // Select elements need the event to go through on iOS 4, otherwise the selector menu won't open.
       // Also this breaks opening selects when VoiceOver is active on iOS6, iOS7 (and possibly others)
-      var isTextInput = () => targetTagName === 'textarea' || targetTagName === 'input';
+      var isTextInput = function () { return targetTagName === 'textarea' || targetTagName === 'input'; }
 
       if ((!deviceIsIOS || targetTagName !== 'select') & !isTextInput) {
         this.targetElement = null;
@@ -832,25 +834,6 @@
 	 * @param {Object} [options={}] The options to override the defaults
 	 */
   FastClick.attach = function (layer, options) {
-    // 阻止双击放大
-    let lastTouchEnd = 0;
-    document.addEventListener('touchstart', function (event) {
-      if (event.touches.length > 1) {
-        event.preventDefault();
-      }
-    });
-    document.addEventListener('touchend', function (event) {
-      let now = (new Date()).getTime();
-      if (now - lastTouchEnd <= 300) {
-        event.preventDefault();
-      }
-      lastTouchEnd = now;
-    }, false);
-
-    // 阻止双指放大
-    document.addEventListener('gesturestart', function (event) {
-      event.preventDefault();
-    });
     return new FastClick(layer, options);
   };
 
@@ -866,6 +849,5 @@
     module.exports.FastClick = FastClick;
   } else {
     window.FastClick = FastClick;
-  }
-
+  };
 }());

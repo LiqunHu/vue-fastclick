@@ -1,6 +1,6 @@
 {
   "name": "vue-fastclick",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "Polyfill to remove click delays on browsers with touch UIs",
   "main": "index.js",
   "scripts": {
