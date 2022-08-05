@@ -1,0 +1,25 @@
+{
+  "name": "vue-fastclick",
+  "version": "1.0.3",
+  "description": "Polyfill to remove click delays on browsers with touch UIs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chuchur/vue-fastclick.git"
+  },
+  "keywords": [
+    "fastclick"
+  ],
+  "author": "chuchur /chuchur@qq.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/chuchur/vue-fastclick/issues"
+  },
+  "homepage": "https://github.com/chuchur/vue-fastclick#readme",
+  "_from": "vue-faskclick@https://github.com/LiqunHu/vue-fastclick.git",
+  "_resolved": "https://github.com/LiqunHu/vue-fastclick.git#master",
+  "__npminstall_done": "Fri Jan 15 2021 10:40:09 GMT+0800 (GMT+08:00)"
+}
